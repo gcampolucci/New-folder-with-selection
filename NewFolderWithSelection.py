@@ -4,41 +4,35 @@ import os
 import shutil
 
 
-# Lista vuota per la memorizzazione dei files selezionati
+# Empty list
 sel_files = []
 
-# Inserimento dei files selezionati nella lista
-# I files selezionati sono memorizzati nel primo parametro
-# (il primo parametro è il nome dello script) come una
-# unica stringa. I files sono tra doppi apici e separati da un singolo carattere vuoto
-# esempio: "/home/user/file1" "/home/user/file2"
+# Insert selected files into list
 for i in sys.argv[1:]:
     sel_files.append(i)
 
-
-# Directory comune tra i files selezionati
+# Selected files common path
 commonPath = os.path.commonpath(sel_files)
-# Nome di default della nuova directory
+# New folder name
 newFolder = "New Folder with items"
-# Nuova directory dove verranno spostati i files selezionati
+# New directory
 commonPath = os.path.join(commonPath,newFolder)
 
-# Contatore cartella
+# Counter
 x = 1
-# Stringa per contatore cartella
+# Counter --string format for directory name
 s = ""
 
-# se la cartella esiste verranno provati nomi incrementati di 1...esempio:
+# If exist:
 #  New Folder with items
 #  New Folder with items (2)
 #  New Folder with items (3)
 while os.path.isdir(commonPath + s):
-    # viene incrementato il contatore
     x = x + 1
     s = " (" + str(x) + ")"
 else:
-    # la nuova cartella viene creata
+    # new directory 
     os.makedirs(commonPath + s)
-    # i files vengono spostati nella nuova cartella
+    # moving selected files into new directory
     for i in sel_files:
         shutil.move(i, commonPath + s)
