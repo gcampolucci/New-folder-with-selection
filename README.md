@@ -1,4 +1,4 @@
-# New-folder-with-selection
+# New folder with selection
 
 NEMO file manager action for creating a folder with the selected files
 
