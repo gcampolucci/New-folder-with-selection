@@ -1,0 +1,10 @@
+[Nemo Action]
+Active=true
+Name=New folder with items
+Comment=Crea una cartella con i files selezionati
+Quote=double
+Exec=<NewFolderWithSelection.py %F>
+Icon-Name=folder-new
+Selection=m
+Extensions=nodirs;
+Dependencies=/usr/bin/python3;
